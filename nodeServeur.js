@@ -1,25 +1,29 @@
 const http = require('http');
 const server = http.createServer(
      (Requeste, Response)=>{
-     console.log("Server  created successfully.")
+    //  console.log("Server  created successfully.")
+     Response.setHeader('content-type','text/html;charset=utf8')
+    //  Response.setHeader('content-type','text/plain')
      if((Requeste.url ==='/' || Requeste.url === '/Home') && Requeste.method === 'GET'){
-         console.log('vous êtes sur la home page');
+        //  console.log('vous êtes sur la home page');
+         Response.write('vous êtes sur la home page');
      }
     else if(requeste.url === '/profil' && requeste.method === 'GET'){
-        console.log('vous êtes sur la page profil');
+        // console.log('vous êtes sur la page profil');
+        Response.write('vous êtes sur la page profil');
     }
     else if(Requeste.url === '/contact' && Requeste.method === 'GET'){
-        Console.log('vous êtes sur la page contact');
+        // Console.log('vous êtes sur la page contact');
+        Response.write('vous êtes sur la page contact');
     }
     else{
-        console.log('404 page non valide');
+        // console.log('404 page non valide');
+         Response.write('<p>404 page non valide</p>');
     }
-     else{
-         console.log('vous êtes sur une page qui n\'existe pas');
-     }
+    
         
      console.log(Requeste.method);
-     console.log(Request.url);
+     console.log(Requeste.url);
     }
 
 );
