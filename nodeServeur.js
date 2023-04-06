@@ -41,35 +41,38 @@ server.listen(8080, "localhost",()=>{
 
 // exercice2
 const http = require('http');
-const server = http.createServer(
-     (Requeste, Response)=>{
-    let fichier = "";
-    //  console.log("Server  created successfully.")
-     Response.setHeader('content-type','text/html;charset=utf8')
-    //  Response.setHeader('content-type','text/plain')
+const server2 = http.createServer(
+    (Requeste, Response)=>{
+        let fichier = "";
+        
+        
+        Response.setHeader('content-type','text/html;charset=utf8')
+     
      if((Requeste.url ==='/' || Requeste.url === '/Home') && Requeste.method === 'GET'){
-        //  console.log('vous êtes sur la home page');
+         fichier ="./HTML/index.html";
+         
          Response.write('vous êtes sur la home page');
-     }
-    else if(requeste.url === '/profil' && requeste.method === 'GET'){
-        // console.log('vous êtes sur la page profil');
-        Response.write('vous êtes sur la page profil');
-    }
-    else if(Requeste.url === '/contact' && Requeste.method === 'GET'){
-        // Console.log('vous êtes sur la page contact');
-        Response.write('vous êtes sur la page contact');
-    }
-    else{
-        // console.log('404 page non valide');
-         Response.write('<p>404 page non valide</p>');
+        }
+        else if(requeste.url === '/profil' && requeste.method === 'GET'){
+            fichier ="./HTML/profil.html";
+            Response.write('vous êtes sur la page profil');
+        }
+        else if(Requeste.url === '/contact' && Requeste.method === 'GET'){
+            fichier ="./HTML/contact.html";
+            Response.write('vous êtes sur la page contact');
+            fichier
+        }
+        else{
+            // console.log('404 page non valide');
+            Response.write('<p>404 page non valide</p>');
+        }
+        
+        
+        console.log(Requeste.method);
+        console.log(Requeste.url);
     }
     
-        
-     console.log(Requeste.method);
-     console.log(Requeste.url);
-    }
-
-);
-server.listen(8080, "localhost",()=>{
-    console.log("Server listening on port 8080");
-})
+    );
+    server.listen(8080, "localhost",()=>{
+        console.log("Server listening on port 8080");
+    })
